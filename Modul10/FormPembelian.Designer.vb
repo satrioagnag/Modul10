@@ -31,15 +31,16 @@ Partial Class FormPembelian
         Me.tbJumlah = New System.Windows.Forms.TextBox()
         Me.btTambah = New System.Windows.Forms.Button()
         Me.dgvTransaksi = New System.Windows.Forms.DataGridView()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.tbTotal = New System.Windows.Forms.TextBox()
-        Me.btSelesai = New System.Windows.Forms.Button()
-        Me.btMaster = New System.Windows.Forms.Button()
         Me.NamaItem = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.harga = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.jumlah = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.subtotal = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.btRemove = New System.Windows.Forms.DataGridViewButtonColumn()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.tbTotal = New System.Windows.Forms.TextBox()
+        Me.btSelesai = New System.Windows.Forms.Button()
+        Me.btMaster = New System.Windows.Forms.Button()
+        Me.btBersihkan = New System.Windows.Forms.Button()
         CType(Me.dgvTransaksi, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -82,7 +83,7 @@ Partial Class FormPembelian
         Me.tbInvoice.Location = New System.Drawing.Point(574, 43)
         Me.tbInvoice.Name = "tbInvoice"
         Me.tbInvoice.ReadOnly = True
-        Me.tbInvoice.Size = New System.Drawing.Size(114, 20)
+        Me.tbInvoice.Size = New System.Drawing.Size(157, 20)
         Me.tbInvoice.TabIndex = 4
         '
         'Label3
@@ -117,45 +118,8 @@ Partial Class FormPembelian
         Me.dgvTransaksi.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.NamaItem, Me.harga, Me.jumlah, Me.subtotal, Me.btRemove})
         Me.dgvTransaksi.Location = New System.Drawing.Point(67, 169)
         Me.dgvTransaksi.Name = "dgvTransaksi"
-        Me.dgvTransaksi.Size = New System.Drawing.Size(621, 136)
+        Me.dgvTransaksi.Size = New System.Drawing.Size(652, 136)
         Me.dgvTransaksi.TabIndex = 8
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(494, 334)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(57, 13)
-        Me.Label4.TabIndex = 9
-        Me.Label4.Text = "Total = Rp"
-        '
-        'tbTotal
-        '
-        Me.tbTotal.Location = New System.Drawing.Point(560, 330)
-        Me.tbTotal.Name = "tbTotal"
-        Me.tbTotal.ReadOnly = True
-        Me.tbTotal.Size = New System.Drawing.Size(100, 20)
-        Me.tbTotal.TabIndex = 10
-        '
-        'btSelesai
-        '
-        Me.btSelesai.BackColor = System.Drawing.Color.SandyBrown
-        Me.btSelesai.Location = New System.Drawing.Point(574, 376)
-        Me.btSelesai.Name = "btSelesai"
-        Me.btSelesai.Size = New System.Drawing.Size(75, 23)
-        Me.btSelesai.TabIndex = 11
-        Me.btSelesai.Text = "Selesai"
-        Me.btSelesai.UseVisualStyleBackColor = False
-        '
-        'btMaster
-        '
-        Me.btMaster.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.btMaster.Location = New System.Drawing.Point(67, 376)
-        Me.btMaster.Name = "btMaster"
-        Me.btMaster.Size = New System.Drawing.Size(145, 23)
-        Me.btMaster.TabIndex = 12
-        Me.btMaster.Text = "Ke Master Transaksi"
-        Me.btMaster.UseVisualStyleBackColor = False
         '
         'NamaItem
         '
@@ -184,11 +148,59 @@ Partial Class FormPembelian
         Me.btRemove.Text = "REMOVE"
         Me.btRemove.UseColumnTextForButtonValue = True
         '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(553, 334)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(57, 13)
+        Me.Label4.TabIndex = 9
+        Me.Label4.Text = "Total = Rp"
+        '
+        'tbTotal
+        '
+        Me.tbTotal.Location = New System.Drawing.Point(619, 330)
+        Me.tbTotal.Name = "tbTotal"
+        Me.tbTotal.ReadOnly = True
+        Me.tbTotal.Size = New System.Drawing.Size(100, 20)
+        Me.tbTotal.TabIndex = 10
+        '
+        'btSelesai
+        '
+        Me.btSelesai.BackColor = System.Drawing.Color.SandyBrown
+        Me.btSelesai.Location = New System.Drawing.Point(574, 376)
+        Me.btSelesai.Name = "btSelesai"
+        Me.btSelesai.Size = New System.Drawing.Size(75, 23)
+        Me.btSelesai.TabIndex = 11
+        Me.btSelesai.Text = "Selesai"
+        Me.btSelesai.UseVisualStyleBackColor = False
+        '
+        'btMaster
+        '
+        Me.btMaster.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.btMaster.Location = New System.Drawing.Point(67, 376)
+        Me.btMaster.Name = "btMaster"
+        Me.btMaster.Size = New System.Drawing.Size(145, 23)
+        Me.btMaster.TabIndex = 12
+        Me.btMaster.Text = "Ke Master Transaksi"
+        Me.btMaster.UseVisualStyleBackColor = False
+        '
+        'btBersihkan
+        '
+        Me.btBersihkan.BackColor = System.Drawing.Color.Honeydew
+        Me.btBersihkan.Location = New System.Drawing.Point(656, 82)
+        Me.btBersihkan.Name = "btBersihkan"
+        Me.btBersihkan.Size = New System.Drawing.Size(75, 23)
+        Me.btBersihkan.TabIndex = 13
+        Me.btBersihkan.Text = "Bersihkan"
+        Me.btBersihkan.UseVisualStyleBackColor = False
+        '
         'FormPembelian
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(732, 450)
+        Me.ClientSize = New System.Drawing.Size(767, 450)
+        Me.Controls.Add(Me.btBersihkan)
         Me.Controls.Add(Me.btMaster)
         Me.Controls.Add(Me.btSelesai)
         Me.Controls.Add(Me.tbTotal)
@@ -228,4 +240,5 @@ Partial Class FormPembelian
     Friend WithEvents jumlah As DataGridViewTextBoxColumn
     Friend WithEvents subtotal As DataGridViewTextBoxColumn
     Friend WithEvents btRemove As DataGridViewButtonColumn
+    Friend WithEvents btBersihkan As Button
 End Class

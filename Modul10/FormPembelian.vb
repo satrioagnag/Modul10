@@ -4,6 +4,8 @@ Public Class FormPembelian
     Dim conn As New MySqlConnection
     Dim da As New MySqlDataAdapter
     Dim ds As New DataSet
+    'membuat variabel untuk mencatat tanggal dan waktu transaksi(no 3)
+    Dim tanggalTransaksi As String = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
 
     Sub koneksi()
         conn = New MySqlConnection("server= localhost" + ";user id=root" + "; password=" + "" + ";database=db_master")
@@ -68,22 +70,60 @@ Public Class FormPembelian
         Try
             Dim nama_pembeli As String = tbPembeli.Text
             Dim nama_item As String = cbMenu.SelectedItem
-            ds.Clear()
-            da = New MySqlDataAdapter("select harga from tbl_barang where nama_barang='" & cbMenu.SelectedItem.ToString() & "'", conn)
-            da.Fill(ds, "harga")
-            Dim harga As Integer = Integer.Parse(ds.Tables("harga").Rows(0).Item(0))
-            Dim jumlah As Integer = Integer.Parse(tbJumlah.Text)
-            Dim subtotal As Integer = jumlah * harga
-            dgvTransaksi.Rows.Add(nama_item, harga, jumlah, subtotal)
+            'variabel untuk menyimpan kondisi data pada datagridview apakah data yang dimasukan sudah ada atau belum(no 1)
+            Dim existingRow As DataGridViewRow = Nothing
 
-            Dim total As Integer = 0
+            'fungsi untuk mengecek apakah barang sudah ada atau belum di dalam datagridview(no 1)
             For Each row As DataGridViewRow In dgvTransaksi.Rows
-                If row.Cells("subtotal").Value IsNot Nothing Then
-                    total += row.Cells("subtotal").Value
+                If row.Cells("namaItem").Value IsNot Nothing AndAlso row.Cells("namaItem").Value.ToString() = nama_item Then
+                    existingRow = row
+                    Exit For
                 End If
             Next
 
-            tbTotal.Text = total
+            ds.Clear()
+            da = New MySqlDataAdapter("SELECT stock FROM tbl_barang WHERE nama_barang='" & nama_item & "'", conn)
+            da.Fill(ds, "barang")
+            Dim stock As Integer = Integer.Parse(ds.Tables("barang").Rows(0).Item("stock"))
+
+            'untuk mengecek apakah stok tersedia(no 4)
+            If stock > 0 Then
+                stock -= 1
+
+                'fungsi if-else untuk memproses apakah data diupdate atau ditambahkan di datagridview(no 1)
+                If existingRow IsNot Nothing Then
+
+                    Dim jumlah As Integer = Integer.Parse(existingRow.Cells("jumlah").Value) + Integer.Parse(tbJumlah.Text)
+                    existingRow.Cells("jumlah").Value = jumlah
+
+                    Dim harga As Integer = Integer.Parse(existingRow.Cells("harga").Value)
+                    existingRow.Cells("subtotal").Value = jumlah * harga
+                Else
+                    ds.Clear()
+                    da = New MySqlDataAdapter("select harga from tbl_barang where nama_barang='" & cbMenu.SelectedItem.ToString() & "'", conn)
+                    da.Fill(ds, "harga")
+                    Dim harga As Integer = Integer.Parse(ds.Tables("harga").Rows(0).Item(0))
+                    Dim jumlah As Integer = Integer.Parse(tbJumlah.Text)
+                    Dim subtotal As Integer = jumlah * harga
+                    dgvTransaksi.Rows.Add(nama_item, harga, jumlah, subtotal)
+                End If
+
+                Dim total As Integer = 0
+                For Each row As DataGridViewRow In dgvTransaksi.Rows
+                    If row.Cells("subtotal").Value IsNot Nothing Then
+                        total += row.Cells("subtotal").Value
+                    End If
+                Next
+
+                tbTotal.Text = total
+                'fungsi untuk mengupdate stock barang(no 4)
+                da = New MySqlDataAdapter("UPDATE tbl_barang SET stock='" & stock & "' WHERE nama_barang='" & nama_item & "'", conn)
+                da.Fill(ds, "stock")
+
+            Else
+                MessageBox.Show("Stok habis")
+            End If
+
             cbMenu.SelectedItem = Nothing
             tbJumlah.Text = String.Empty
         Catch ex As Exception
@@ -108,10 +148,12 @@ Public Class FormPembelian
     Private Sub btSelesai_Click(sender As Object, e As EventArgs) Handles btSelesai.Click
         Try
             ds.Clear()
-            da = New MySqlDataAdapter("insert into tbl_transaksi Values (?,?,?)", conn)
+            da = New MySqlDataAdapter("insert into tbl_transaksi Values (?,?,?,?)", conn)
             da.SelectCommand.Parameters.AddWithValue("no_invoice", tbInvoice.Text)
             da.SelectCommand.Parameters.AddWithValue("nama_pembeli", tbPembeli.Text)
             da.SelectCommand.Parameters.AddWithValue("total", tbTotal.Text)
+            'command untuk menambahkan data tanggal ke database(no 3)
+            da.SelectCommand.Parameters.AddWithValue("tanggal_transaksi", tanggalTransaksi)
             da.Fill(ds, "transaksi")
             ds.Clear()
 
@@ -150,5 +192,16 @@ Public Class FormPembelian
         clear()
         MasterTransaksi.Show()
         Me.Hide()
+    End Sub
+
+    'button untuk membersihkan semua inputan(no 2)
+    Private Sub btBersihkan_Click(sender As Object, e As EventArgs) Handles btBersihkan.Click
+        clear()
+        For Each ctr In Me.Controls
+            If TypeOf ctr Is DataGridView Then
+                Dim dgv As DataGridView = DirectCast(ctr, DataGridView)
+                dgv.Rows.Clear()
+            End If
+        Next
     End Sub
 End Class
