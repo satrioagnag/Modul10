@@ -41,7 +41,12 @@ Partial Class FormPembelian
         Me.btSelesai = New System.Windows.Forms.Button()
         Me.btMaster = New System.Windows.Forms.Button()
         Me.btBersihkan = New System.Windows.Forms.Button()
+        Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
+        Me.PembelianToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MasterBarangToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MasterTransaksiToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         CType(Me.dgvTransaksi, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label1
@@ -195,11 +200,39 @@ Partial Class FormPembelian
         Me.btBersihkan.Text = "Bersihkan"
         Me.btBersihkan.UseVisualStyleBackColor = False
         '
+        'MenuStrip1
+        '
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PembelianToolStripMenuItem, Me.MasterBarangToolStripMenuItem, Me.MasterTransaksiToolStripMenuItem})
+        Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
+        Me.MenuStrip1.Name = "MenuStrip1"
+        Me.MenuStrip1.Size = New System.Drawing.Size(767, 24)
+        Me.MenuStrip1.TabIndex = 14
+        Me.MenuStrip1.Text = "MenuStrip1"
+        '
+        'PembelianToolStripMenuItem
+        '
+        Me.PembelianToolStripMenuItem.Name = "PembelianToolStripMenuItem"
+        Me.PembelianToolStripMenuItem.Size = New System.Drawing.Size(75, 20)
+        Me.PembelianToolStripMenuItem.Text = "Pembelian"
+        '
+        'MasterBarangToolStripMenuItem
+        '
+        Me.MasterBarangToolStripMenuItem.Name = "MasterBarangToolStripMenuItem"
+        Me.MasterBarangToolStripMenuItem.Size = New System.Drawing.Size(95, 20)
+        Me.MasterBarangToolStripMenuItem.Text = "Master Barang"
+        '
+        'MasterTransaksiToolStripMenuItem
+        '
+        Me.MasterTransaksiToolStripMenuItem.Name = "MasterTransaksiToolStripMenuItem"
+        Me.MasterTransaksiToolStripMenuItem.Size = New System.Drawing.Size(105, 20)
+        Me.MasterTransaksiToolStripMenuItem.Text = "Master Transaksi"
+        '
         'FormPembelian
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(767, 450)
+        Me.Controls.Add(Me.MenuStrip1)
         Me.Controls.Add(Me.btBersihkan)
         Me.Controls.Add(Me.btMaster)
         Me.Controls.Add(Me.btSelesai)
@@ -217,6 +250,8 @@ Partial Class FormPembelian
         Me.Name = "FormPembelian"
         Me.Text = "Form Pembelian"
         CType(Me.dgvTransaksi, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.MenuStrip1.ResumeLayout(False)
+        Me.MenuStrip1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -241,4 +276,8 @@ Partial Class FormPembelian
     Friend WithEvents subtotal As DataGridViewTextBoxColumn
     Friend WithEvents btRemove As DataGridViewButtonColumn
     Friend WithEvents btBersihkan As Button
+    Friend WithEvents MenuStrip1 As MenuStrip
+    Friend WithEvents PembelianToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents MasterBarangToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents MasterTransaksiToolStripMenuItem As ToolStripMenuItem
 End Class

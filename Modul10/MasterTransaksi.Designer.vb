@@ -30,7 +30,12 @@ Partial Class MasterTransaksi
         Me.btBack = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.tbSubtotal = New System.Windows.Forms.TextBox()
+        Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
+        Me.PembelianToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MasterBarangToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MasterTransaksiToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         CType(Me.dgvMaster, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label1
@@ -94,11 +99,39 @@ Partial Class MasterTransaksi
         Me.tbSubtotal.Size = New System.Drawing.Size(140, 20)
         Me.tbSubtotal.TabIndex = 4
         '
+        'MenuStrip1
+        '
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PembelianToolStripMenuItem, Me.MasterBarangToolStripMenuItem, Me.MasterTransaksiToolStripMenuItem})
+        Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
+        Me.MenuStrip1.Name = "MenuStrip1"
+        Me.MenuStrip1.Size = New System.Drawing.Size(800, 24)
+        Me.MenuStrip1.TabIndex = 5
+        Me.MenuStrip1.Text = "MenuStrip1"
+        '
+        'PembelianToolStripMenuItem
+        '
+        Me.PembelianToolStripMenuItem.Name = "PembelianToolStripMenuItem"
+        Me.PembelianToolStripMenuItem.Size = New System.Drawing.Size(75, 20)
+        Me.PembelianToolStripMenuItem.Text = "Pembelian"
+        '
+        'MasterBarangToolStripMenuItem
+        '
+        Me.MasterBarangToolStripMenuItem.Name = "MasterBarangToolStripMenuItem"
+        Me.MasterBarangToolStripMenuItem.Size = New System.Drawing.Size(95, 20)
+        Me.MasterBarangToolStripMenuItem.Text = "Master Barang"
+        '
+        'MasterTransaksiToolStripMenuItem
+        '
+        Me.MasterTransaksiToolStripMenuItem.Name = "MasterTransaksiToolStripMenuItem"
+        Me.MasterTransaksiToolStripMenuItem.Size = New System.Drawing.Size(105, 20)
+        Me.MasterTransaksiToolStripMenuItem.Text = "Master Transaksi"
+        '
         'MasterTransaksi
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.MenuStrip1)
         Me.Controls.Add(Me.tbSubtotal)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.btBack)
@@ -107,6 +140,8 @@ Partial Class MasterTransaksi
         Me.Name = "MasterTransaksi"
         Me.Text = "MasterTransaksi"
         CType(Me.dgvMaster, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.MenuStrip1.ResumeLayout(False)
+        Me.MenuStrip1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -120,4 +155,8 @@ Partial Class MasterTransaksi
     Friend WithEvents btBack As Button
     Friend WithEvents Label2 As Label
     Friend WithEvents tbSubtotal As TextBox
+    Friend WithEvents MenuStrip1 As MenuStrip
+    Friend WithEvents PembelianToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents MasterBarangToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents MasterTransaksiToolStripMenuItem As ToolStripMenuItem
 End Class

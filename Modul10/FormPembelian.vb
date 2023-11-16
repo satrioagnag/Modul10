@@ -7,6 +7,19 @@ Public Class FormPembelian
     'membuat variabel untuk mencatat tanggal dan waktu transaksi(no 3)
     Dim tanggalTransaksi As String = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
 
+
+    Private Sub MasterBarangToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MasterBarangToolStripMenuItem.Click
+        MasterBarang.Show()
+        'Me.Dispose()
+        Me.Hide()
+    End Sub
+
+    Private Sub MasterTransaksiToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MasterTransaksiToolStripMenuItem.Click
+        MasterTransaksi.Show()
+        'Me.Dispose()
+        Me.Hide()
+    End Sub
+
     Sub koneksi()
         conn = New MySqlConnection("server= localhost" + ";user id=root" + "; password=" + "" + ";database=db_master")
     End Sub

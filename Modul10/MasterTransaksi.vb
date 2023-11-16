@@ -4,6 +4,18 @@ Public Class MasterTransaksi
     Dim da As New MySqlDataAdapter
     Dim ds As New DataSet
 
+    Private Sub PembelianToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PembelianToolStripMenuItem.Click
+        FormPembelian.Show()
+        Me.Dispose()
+        Me.Hide()
+    End Sub
+
+    Private Sub MasterBarangToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MasterBarangToolStripMenuItem.Click
+        MasterBarang.Show()
+        Me.Dispose()
+        Me.Hide()
+    End Sub
+
     Sub koneksi()
         conn = New MySqlConnection("server= localhost" + ";user id=root" + "; password=" + "" + ";database=db_master")
     End Sub
