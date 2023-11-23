@@ -20,6 +20,11 @@ Public Class FormPembelian
         Me.Hide()
     End Sub
 
+    Private Sub ReportToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReportToolStripMenuItem.Click
+        crystal_report.Show()
+        Me.Hide()
+    End Sub
+
     Sub koneksi()
         conn = New MySqlConnection("server= localhost" + ";user id=root" + "; password=" + "" + ";database=db_master")
     End Sub
@@ -191,9 +196,15 @@ Public Class FormPembelian
                 End If
             Next
 
+            Dim StrukPembelian As New struk
+            StrukPembelian.InvoiceNumber = tbInvoice.Text
+            StrukPembelian.CustomerName = tbPembeli.Text
+            StrukPembelian.Show()
+
             clear()
             MessageBox.Show("Data berhasil disimpan")
             Invoice()
+
 
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Terjadi Kesalahan", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -217,4 +228,6 @@ Public Class FormPembelian
             End If
         Next
     End Sub
+
+
 End Class

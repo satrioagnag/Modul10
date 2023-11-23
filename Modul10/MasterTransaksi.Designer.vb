@@ -34,6 +34,7 @@ Partial Class MasterTransaksi
         Me.PembelianToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MasterBarangToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MasterTransaksiToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         CType(Me.dgvMaster, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -101,7 +102,7 @@ Partial Class MasterTransaksi
         '
         'MenuStrip1
         '
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PembelianToolStripMenuItem, Me.MasterBarangToolStripMenuItem, Me.MasterTransaksiToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PembelianToolStripMenuItem, Me.MasterBarangToolStripMenuItem, Me.MasterTransaksiToolStripMenuItem, Me.ReportToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(800, 24)
@@ -125,6 +126,12 @@ Partial Class MasterTransaksi
         Me.MasterTransaksiToolStripMenuItem.Name = "MasterTransaksiToolStripMenuItem"
         Me.MasterTransaksiToolStripMenuItem.Size = New System.Drawing.Size(105, 20)
         Me.MasterTransaksiToolStripMenuItem.Text = "Master Transaksi"
+        '
+        'ReportToolStripMenuItem
+        '
+        Me.ReportToolStripMenuItem.Name = "ReportToolStripMenuItem"
+        Me.ReportToolStripMenuItem.Size = New System.Drawing.Size(54, 20)
+        Me.ReportToolStripMenuItem.Text = "Report"
         '
         'MasterTransaksi
         '
@@ -159,4 +166,5 @@ Partial Class MasterTransaksi
     Friend WithEvents PembelianToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents MasterBarangToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents MasterTransaksiToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ReportToolStripMenuItem As ToolStripMenuItem
 End Class

@@ -88,4 +88,9 @@ Public Class MasterTransaksi
         Me.Dispose()
 
     End Sub
+
+    Private Sub ReportToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReportToolStripMenuItem.Click
+        crystal_report.Show()
+        Me.Hide()
+    End Sub
 End Class

@@ -38,13 +38,16 @@ Partial Class MasterBarang
         Me.btnSimpan = New System.Windows.Forms.Button()
         Me.btnUpdate = New System.Windows.Forms.Button()
         Me.dgvBarang = New System.Windows.Forms.DataGridView()
-        Me.nudStock = New System.Windows.Forms.NumericUpDown()
         Me.id_barang = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.nama_barang = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Harga = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Stock = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.btUbah = New System.Windows.Forms.DataGridViewButtonColumn()
         Me.btHapus = New System.Windows.Forms.DataGridViewButtonColumn()
+        Me.nudStock = New System.Windows.Forms.NumericUpDown()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.tb_totalItem = New System.Windows.Forms.TextBox()
+        Me.ReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         CType(Me.dgvBarang, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.nudStock, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -52,7 +55,7 @@ Partial Class MasterBarang
         '
         'MenuStrip1
         '
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PembelianToolStripMenuItem, Me.MasterBarangToolStripMenuItem, Me.MasterTransaksiToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PembelianToolStripMenuItem, Me.MasterBarangToolStripMenuItem, Me.MasterTransaksiToolStripMenuItem, Me.ReportToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(800, 24)
@@ -186,13 +189,6 @@ Partial Class MasterBarang
         Me.dgvBarang.Size = New System.Drawing.Size(698, 250)
         Me.dgvBarang.TabIndex = 12
         '
-        'nudStock
-        '
-        Me.nudStock.Location = New System.Drawing.Point(491, 150)
-        Me.nudStock.Name = "nudStock"
-        Me.nudStock.Size = New System.Drawing.Size(71, 20)
-        Me.nudStock.TabIndex = 13
-        '
         'id_barang
         '
         Me.id_barang.HeaderText = "ID Barang"
@@ -227,11 +223,42 @@ Partial Class MasterBarang
         Me.btHapus.Text = "HAPUS"
         Me.btHapus.UseColumnTextForButtonValue = True
         '
+        'nudStock
+        '
+        Me.nudStock.Location = New System.Drawing.Point(491, 150)
+        Me.nudStock.Name = "nudStock"
+        Me.nudStock.Size = New System.Drawing.Size(71, 20)
+        Me.nudStock.TabIndex = 13
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(565, 466)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(54, 13)
+        Me.Label6.TabIndex = 14
+        Me.Label6.Text = "Total Item"
+        '
+        'tb_totalItem
+        '
+        Me.tb_totalItem.Location = New System.Drawing.Point(644, 462)
+        Me.tb_totalItem.Name = "tb_totalItem"
+        Me.tb_totalItem.Size = New System.Drawing.Size(100, 20)
+        Me.tb_totalItem.TabIndex = 15
+        '
+        'ReportToolStripMenuItem
+        '
+        Me.ReportToolStripMenuItem.Name = "ReportToolStripMenuItem"
+        Me.ReportToolStripMenuItem.Size = New System.Drawing.Size(54, 20)
+        Me.ReportToolStripMenuItem.Text = "Report"
+        '
         'MasterBarang
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.ClientSize = New System.Drawing.Size(800, 510)
+        Me.Controls.Add(Me.tb_totalItem)
+        Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.nudStock)
         Me.Controls.Add(Me.dgvBarang)
         Me.Controls.Add(Me.btnUpdate)
@@ -281,4 +308,7 @@ Partial Class MasterBarang
     Friend WithEvents Stock As DataGridViewTextBoxColumn
     Friend WithEvents btUbah As DataGridViewButtonColumn
     Friend WithEvents btHapus As DataGridViewButtonColumn
+    Friend WithEvents Label6 As Label
+    Friend WithEvents tb_totalItem As TextBox
+    Friend WithEvents ReportToolStripMenuItem As ToolStripMenuItem
 End Class

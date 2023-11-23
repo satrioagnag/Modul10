@@ -25,6 +25,11 @@ Public Class MasterBarang
         tampil_data()
     End Sub
 
+    Sub showitem()
+        ds.Clear()
+        da = New MySqlDataAdapter("SELECT COUNT(*) AS jumlah_barang FROM tbl_barang;", conn)
+    End Sub
+
     Sub clear()
         For Each ctr In Me.Controls
             If TypeOf ctr Is TextBox Then
@@ -140,5 +145,10 @@ Public Class MasterBarang
             ds.Clear()
             tampil_data()
         End If
+    End Sub
+
+    Private Sub ReportToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReportToolStripMenuItem.Click
+        crystal_report.Show()
+        Me.Hide()
     End Sub
 End Class
